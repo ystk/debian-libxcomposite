@@ -23,6 +23,7 @@ ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 	MAKEFLAGS += -j$(NUMJOBS)
 endif
 
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 DEB_HOST_ARCH      ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
 DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
@@ -33,13 +34,17 @@ else
 endif
 
 
-build: build-stamp
+build: build-arch build-indep
+build-indep:
+build-arch: build-stamp
+
 build-stamp:
 	dh_testdir
 	autoreconf -vfi
 	mkdir -p build
 	cd build && \
 	../configure --prefix=/usr --mandir=\$${prefix}/share/man \
+	             --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH) \
 	             --infodir=\$${prefix}/share/info $(confflags) \
 	             CFLAGS="$(CFLAGS)" 
 	cd build && $(MAKE)
@@ -94,4 +99,4 @@ binary-indep: build install
 # Nothing to do
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install
+.PHONY: build-indep build-arch build clean binary-indep binary-arch binary install

@@ -1,3 +1,26 @@
+libxcomposite (1:0.4.3-2) unstable; urgency=low
+
+  * Team upload.
+
+  [ Steve Langasek ]
+  * Build for multiarch.
+
+  [ Julien Cristau ]
+  * Remove David Nusinow and Brice Goglin from Uploaders.
+  * Bump Standards-Version to 3.9.2.
+  * Add build-indep and build-arch d/rules targets.
+
+ -- Julien Cristau <jcristau@debian.org>  Sat, 11 Jun 2011 15:02:58 +0200
+
+libxcomposite (1:0.4.3-1) unstable; urgency=low
+
+  * New upstream release.
+  * Remove obsolete build-deps.
+  * Bump xutils-dev build-dep for new macros.
+  * Add myself to Uploaders.
+
+ -- Cyril Brulebois <kibi@debian.org>  Sat, 06 Nov 2010 14:09:31 +0100
+
 libxcomposite (1:0.4.2-1) unstable; urgency=low
 
   * New upstream release.
