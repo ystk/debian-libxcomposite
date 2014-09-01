@@ -1,3 +1,13 @@
+libxcomposite (1:0.4.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * Bump debhelper compat level to 7.
+  * Use dpkg-buildflags.
+  * Disable silent rules.
+  * Use dh_prep instead of dh_clean -k.
+
+ -- Julien Cristau <jcristau@debian.org>  Sun, 16 Jun 2013 21:06:22 +0200
+
 libxcomposite (1:0.4.3-2) unstable; urgency=low
 
   * Team upload.
